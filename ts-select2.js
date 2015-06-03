@@ -56,7 +56,7 @@
         function tsSelect2DirectiveLink(scope, element, attrs, ngModelCtrl) {
             var select2Options = {};
             angular.extend(select2Options, TS_SELECT2_DEFAULTS);
-            angular.extend(select2Options, scope.options);
+            angular.extend(select2Options, scope.$eval(attrs.tsSelect2));
 
             element.hide();
 
@@ -173,9 +173,6 @@
             restrict: 'A',
             require: '^ngModel',
             priority: 1,
-            scope: {
-                options: '=?tsSelect2'
-            },
             link: tsSelect2DirectiveLink
         }
     }
